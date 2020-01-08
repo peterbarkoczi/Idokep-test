@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public abstract class Test {
+public abstract class BaseTest {
 
     private String username;
     private String password;
