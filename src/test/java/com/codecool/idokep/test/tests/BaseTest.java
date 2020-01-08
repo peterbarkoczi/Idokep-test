@@ -10,8 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public abstract class Test {
-
+public abstract class BaseTest {
     private String username;
     private String password;
     protected ChromeDriver driver;
@@ -27,6 +26,7 @@ public abstract class Test {
         System.setProperty("webdriver.chrome.driver", getBasePath() + "/src/test/resources/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+
     }
 
     @AfterEach

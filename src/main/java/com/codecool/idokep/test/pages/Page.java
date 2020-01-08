@@ -10,8 +10,6 @@ public abstract class Page {
     String baseUrl;
     WebDriverWait wait;
 
-    public Page(){}
-
     public Page(WebDriver driver) {
         this.driver = driver;
         int timeOutInSeconds = 8;
