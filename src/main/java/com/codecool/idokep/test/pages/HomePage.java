@@ -12,6 +12,9 @@ public class HomePage extends Page {
     @FindBy(className = "idokep_logo")
     WebElement logo;
 
+    @FindBy(className = "oltozet")
+    WebElement recommendedClothing;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -26,5 +29,9 @@ public class HomePage extends Page {
 
     public boolean isLogoDisplayed() {
         return logo.isDisplayed();
+    }
+
+    public String getRecommendedClothing() {
+        return recommendedClothing.getText();
     }
 }

@@ -23,4 +23,9 @@ public class HomePageTest extends BaseTest{
         Assertions.assertFalse(homePage.getBriefForecast().isEmpty());
     }
 
+    @Test
+    public void testRecommendedClothingAvailable() {
+        Assertions.assertFalse(homePage.getRecommendedClothing().isEmpty());
+    }
+
 }
