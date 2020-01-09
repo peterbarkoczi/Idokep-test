@@ -9,6 +9,9 @@ public class HomePage extends Page {
     @FindBy(className = "rovid-elorejelzes")
     WebElement briefForecast;
 
+    @FindBy(className = "idokep_logo")
+    WebElement logo;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -19,5 +22,9 @@ public class HomePage extends Page {
 
     public String getBriefForecast() {
         return briefForecast.getText();
+    }
+
+    public boolean isLogoDisplayed() {
+        return logo.isDisplayed();
     }
 }

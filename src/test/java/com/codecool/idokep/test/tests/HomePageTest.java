@@ -14,6 +14,11 @@ public class HomePageTest extends BaseTest{
     }
 
     @Test
+    public void testMainPageLoads() {
+        Assertions.assertTrue(homePage.isLogoDisplayed());
+    }
+
+    @Test
     public void testBriefForecastDisplayed() {
         Assertions.assertFalse(homePage.getBriefForecast().isEmpty());
     }
