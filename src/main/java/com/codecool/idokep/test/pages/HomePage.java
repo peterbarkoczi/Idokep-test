@@ -4,16 +4,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends Page {
+public class HomePage extends WeatherPage {
 
     @FindBy(className = "rovid-elorejelzes")
-    WebElement briefForecast;
+    private WebElement briefForecast;
 
     @FindBy(className = "idokep_logo")
-    WebElement logo;
+    private WebElement logo;
 
     @FindBy(className = "oltozet")
-    WebElement recommendedClothing;
+    private WebElement recommendedClothing;
 
     @FindBy(css = ".login-reg #show-panel[titlee='login-panel']")
     private WebElement loginButton;
