@@ -30,6 +30,12 @@ public class WebshopTest extends BaseTest {
         assertTrue(productDetailPage.isDescriptionDisplayed() && productDetailPage.isLeadDisplayed());
     }
 
+    @Test
+    void nextItemIsDisplayedTest() {
+        webshopPage.clickOnNextArrow();
+        assertTrue(webshopPage.isNextElementDisplayed());
+    }
+
     @ParameterizedTest
     @CsvFileSource(resources = "/searchkeys.csv", numLinesToSkip = 1)
     void searchItems(String searchKey) {
