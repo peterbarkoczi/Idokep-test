@@ -15,6 +15,9 @@ public class WebshopPage extends Page {
     @FindBy(xpath = "//img[@alt='Kültéri IP kamera']")
     WebElement cameraThumbnail;
 
+    @FindBy(xpath = "//input[@id='search_query_top']")
+    WebElement searchBar;
+
     public WebshopPage(WebDriver driver) {
         super(driver);
     }
@@ -27,4 +30,8 @@ public class WebshopPage extends Page {
         cameraThumbnail.click();
     }
 
+    public void setSearchKey(String input) {
+        searchBar.sendKeys(input);
+        searchBar.submit();
+    }
 }
