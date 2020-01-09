@@ -35,5 +35,4 @@ public abstract class Modal extends Page {
     protected void unSelectCheckbox(WebElement checkbox) {
         if (checkbox.isSelected()) checkbox.click();
     }
-
 }
