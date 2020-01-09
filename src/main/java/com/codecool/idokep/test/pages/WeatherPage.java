@@ -9,11 +9,11 @@ import java.util.List;
 
 public abstract class WeatherPage extends Page {
 
-    /*
-     * MAIN MENU ITEMS
-     */
     @FindBy(id = "eloreoldal")
     WebElement forecastMenu;
+
+    @FindBy(css = ".menu-wrap a[href='/eszlel']")
+    WebElement communityMenu;
 
     public WeatherPage(WebDriver driver) {
         super(driver);
@@ -26,11 +26,16 @@ public abstract class WeatherPage extends Page {
         for (WebElement subMenuItem : subMenuItems) {
             if (subMenuItem.getText().equals(subMenuText)) {
                 subMenuItem.click();
+                return;
             }
         }
     }
 
     public void selectSubMenuInForecastMenu(String subMenu) {
         selectMenu(forecastMenu, subMenu);
+    }
+
+    public void selectSubMenuInCommunityMenu(String subMenu) {
+        selectMenu(communityMenu, subMenu);
     }
 }

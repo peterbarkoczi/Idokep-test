@@ -42,4 +42,8 @@ public abstract class Page {
         return baseUrl + urlExtension;
     }
 
+    public String getTitle() {
+        return driver.getTitle();
+    }
+
 }

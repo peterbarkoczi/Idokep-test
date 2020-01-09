@@ -24,10 +24,10 @@ public class HomePage extends WeatherPage {
     private WebElement logoutButton;
 
     @FindBy(css = ".login-reg a")
-    List<WebElement> allLinksInUserPanel;
+    private List<WebElement> allLinksInUserPanel;
 
-//    @FindBy(css = "#show-panel[titlee='varos-valaszto-panel']")
-//    protected WebElement locationButton;
+    @FindBy(css = "#show-panel[titlee='varos-valaszto-panel']")
+    private WebElement locationButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -87,5 +87,4 @@ public class HomePage extends WeatherPage {
     public List<WebElement> getAllLinksInUserPanel() {
         return allLinksInUserPanel;
     }
-
 }
