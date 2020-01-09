@@ -16,7 +16,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 class LoginTest extends BaseTest {
-    private HomePage homePage;
 
     @BeforeEach
     void setupTest() {
