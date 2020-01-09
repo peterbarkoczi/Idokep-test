@@ -12,16 +12,12 @@ public abstract class Modal extends Page {
     @FindBy(css = "div[class='bekuld'] input[type='submit'][value='Belépés']")
     private WebElement submitButton;
 
-    Modal(WebDriver driver) {
+    public Modal(WebDriver driver) {
         super(driver);
     }
 
     public WebElement getSubmitButton() {
         return submitButton;
-    }
-
-    public Modal(WebDriver driver) {
-        super(driver);
     }
 
     protected void fillInput(WebElement field, String inputText) {
@@ -39,5 +35,4 @@ public abstract class Modal extends Page {
     protected void unSelectCheckbox(WebElement checkbox) {
         if (checkbox.isSelected()) checkbox.click();
     }
-
 }

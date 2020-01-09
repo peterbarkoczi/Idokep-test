@@ -36,5 +36,5 @@ public abstract class Page {
     public void navigateToHomePage() {
         driver.get(baseUrl);
     }
-    
+
 }
