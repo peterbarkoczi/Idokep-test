@@ -58,4 +58,10 @@ public class HomePage extends Page {
         logoutButton.click();
     }
 
+    public void login(String username, String password) {
+        navigateToHomePage();
+        LoginModal loginModal = clickLogin(username, password);
+        loginModal.login();
+    }
+
 }
