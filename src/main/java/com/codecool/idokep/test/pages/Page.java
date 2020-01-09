@@ -32,4 +32,9 @@ public abstract class Page {
     public void navigateTo(String extendedUrl) {
         driver.get(baseUrl + extendedUrl);
     }
+
+    public void navigateToHomePage() {
+        driver.get(baseUrl);
+    }
+    
 }
