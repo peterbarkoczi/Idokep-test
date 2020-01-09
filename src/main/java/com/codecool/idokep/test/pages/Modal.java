@@ -16,7 +16,6 @@ public abstract class Modal extends Page {
         super(driver);
     }
 
-
     public WebElement getSubmitButton() {
         return submitButton;
     }

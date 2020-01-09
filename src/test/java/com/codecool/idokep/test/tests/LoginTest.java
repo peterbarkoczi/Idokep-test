@@ -8,6 +8,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
@@ -21,19 +25,19 @@ class LoginTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("getCredentialsForLoginTests")
-    void loginTest(String username, String password) {
+    void loginTest(String username, String password, boolean expectedResult) {
         homePage.login(username, password);
-        Assertions.assertTrue(homePage.isLogoutButtonDisplayed());
+        Assertions.assertEquals(expectedResult, homePage.isLogoutButtonDisplayed());
     }
 
     private Stream<Arguments> getCredentialsForLoginTests() {
         return Stream.of(
-                Arguments.of(username, password),
-                Arguments.of(username.toUpperCase(), password),
-                Arguments.of(username, password.toUpperCase()),
-                Arguments.of("Username", password),
-                Arguments.of(username, "password"),
-                Arguments.of("", "")
+                Arguments.of(username, password, true),
+                Arguments.of(username.toUpperCase(), password, false),
+                Arguments.of(username, password.toUpperCase(), false),
+                Arguments.of("Username", password, false),
+                Arguments.of(username, "password", false),
+                Arguments.of("", "", false)
         );
     }
 

@@ -17,6 +17,9 @@ public class WebshopPage extends Page {
     @FindBy(xpath = "//li[@class='ajax_block_product item']")
     List<WebElement> products;
 
+    @FindBy(xpath = "//input[@id='search_query_top']")
+    WebElement searchBar;
+
     public WebshopPage(WebDriver driver) {
         super(driver);
     }
@@ -38,4 +41,8 @@ public class WebshopPage extends Page {
     }
 
 
+    public void setSearchKey(String input) {
+        searchBar.sendKeys(input);
+        searchBar.submit();
+    }
 }
