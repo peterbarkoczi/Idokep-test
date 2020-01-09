@@ -11,12 +11,13 @@ public abstract class Page {
     WebDriver driver;
     WebDriverWait wait;
     String baseUrl;
+    String urlExtension;
 
     public Page(WebDriver driver) {
         this.driver = driver;
-        int timeOutInSeconds = 8;
+        int timeOutInSeconds = 4;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, timeOutInSeconds), this);
-        baseUrl = "https://idokep.hu";
+        baseUrl = "https://idokep.hu/";
         wait = new WebDriverWait(driver, timeOutInSeconds);
     }
 
@@ -35,6 +36,10 @@ public abstract class Page {
 
     public void navigateToHomePage() {
         driver.get(baseUrl);
+    }
+
+    public String getUrl() {
+        return baseUrl + urlExtension;
     }
 
 }
