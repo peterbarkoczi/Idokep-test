@@ -6,13 +6,14 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
-    protected WebDriver driver;
-    String baseUrl;
-    WebDriverWait wait;
+    WebDriver driver;
+
+    private String baseUrl;
+    private WebDriverWait wait;
 
     public Page(){}
 
-    public Page(WebDriver driver) {
+    Page(WebDriver driver) {
         this.driver = driver;
         int timeOutInSeconds = 8;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, timeOutInSeconds), this);
@@ -20,7 +21,15 @@ public abstract class Page {
         wait = new WebDriverWait(driver, timeOutInSeconds);
     }
 
+    public void navigateToHomePage() {
+        driver.get(baseUrl);
+    }
+
     public void navigateTo(String extendedUrl) {
         driver.get(baseUrl + extendedUrl);
+    }
+
+    public String getBaseUrl() {
+        return baseUrl;
     }
 }
