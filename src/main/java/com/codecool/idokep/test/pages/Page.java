@@ -7,13 +7,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
     WebDriver driver;
+    String baseUrl;
+    WebDriverWait wait;
 
-    private String baseUrl;
-    private WebDriverWait wait;
-
-    public Page(){}
-
-    Page(WebDriver driver) {
+    public Page(WebDriver driver) {
         this.driver = driver;
         int timeOutInSeconds = 8;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, timeOutInSeconds), this);
@@ -28,8 +25,5 @@ public abstract class Page {
     public void navigateTo(String extendedUrl) {
         driver.get(baseUrl + extendedUrl);
     }
-
-    public String getBaseUrl() {
-        return baseUrl;
-    }
+    
 }

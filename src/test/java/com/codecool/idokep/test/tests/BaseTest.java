@@ -1,5 +1,6 @@
 package com.codecool.idokep.test.tests;
 
+import com.codecool.idokep.test.pages.HomePage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +16,7 @@ public abstract class BaseTest {
     protected String username;
     protected String password;
     protected ChromeDriver driver;
+    protected HomePage homePage;
 
     @BeforeAll
     public void setupTestEnvironment() {

@@ -4,7 +4,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends Page{
+public class HomePage extends Page {
+
+    @FindBy(className = "rovid-elorejelzes")
+    WebElement briefForecast;
+
+    @FindBy(className = "idokep_logo")
+    WebElement logo;
+
+    @FindBy(className = "oltozet")
+    WebElement recommendedClothing;
 
     @FindBy(css = ".login-reg #show-panel[titlee='login-panel']")
     private WebElement loginButton;
@@ -14,6 +23,22 @@ public class HomePage extends Page{
 
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+
+    public void load() {
+        driver.get(baseUrl);
+    }
+
+    public String getBriefForecast() {
+        return briefForecast.getText();
+    }
+
+    public boolean isLogoDisplayed() {
+        return logo.isDisplayed();
+    }
+
+    public String getRecommendedClothing() {
+        return recommendedClothing.getText();
     }
 
     public LoginModal clickLogin(String username, String password) {
