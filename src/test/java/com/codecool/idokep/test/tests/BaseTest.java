@@ -1,5 +1,6 @@
 package com.codecool.idokep.test.tests;
 
+import com.codecool.idokep.test.pages.HomePage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +15,7 @@ public abstract class BaseTest {
     private String username;
     private String password;
     protected ChromeDriver driver;
+    protected HomePage homePage;
 
     @BeforeAll
     public void setupTestEnvironment() {
@@ -26,7 +28,6 @@ public abstract class BaseTest {
         System.setProperty("webdriver.chrome.driver", getBasePath() + "/src/test/resources/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-
     }
 
     @AfterEach
