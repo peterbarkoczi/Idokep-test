@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class HomePage extends Page {
 
     @FindBy(className = "rovid-elorejelzes")
@@ -20,6 +22,9 @@ public class HomePage extends Page {
 
     @FindBy(css = ".login-reg div[titlee='login-panel'] a")
     private WebElement logoutButton;
+
+    @FindBy(css = ".login-reg a")
+    List<WebElement> allLinksInUserPanel;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -50,6 +55,10 @@ public class HomePage extends Page {
         return logoutButton.isDisplayed();
     }
 
+    public boolean isLoginButtonDisplayed() {
+        return loginButton.isDisplayed();
+    }
+
     public WebElement getLogoutButton() {
         return logoutButton;
     }
@@ -62,6 +71,18 @@ public class HomePage extends Page {
         navigateToHomePage();
         LoginModal loginModal = clickLogin(username, password);
         loginModal.login();
+    }
+
+    public void logout() {
+        for (WebElement link : allLinksInUserPanel) {
+            if (link.getText().equals("Kijelentkezés")) {
+                link.click();
+            }
+        }
+    }
+
+    public List<WebElement> getAllLinksInUserPanel() {
+        return allLinksInUserPanel;
     }
 
 }
