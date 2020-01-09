@@ -9,8 +9,16 @@ public abstract class Modal extends Page {
     @FindBy(id = "close-panel")
     WebElement closeButton;
 
-    @FindBy(css = "#lightbox-panel input[type='submit']")
-    WebElement submitButton;
+    @FindBy(css = "div[class='bekuld'] input[type='submit'][value='Belépés']")
+    private WebElement submitButton;
+
+    Modal(WebDriver driver) {
+        super(driver);
+    }
+
+    public WebElement getSubmitButton() {
+        return submitButton;
+    }
 
     public Modal(WebDriver driver) {
         super(driver);
