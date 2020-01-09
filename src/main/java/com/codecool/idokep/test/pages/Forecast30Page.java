@@ -14,6 +14,10 @@ public class Forecast30Page extends WeatherPage {
     @FindBy(className = "max-homerseklet-default")
     List<WebElement> minTemperatures;
 
+    public Forecast30Page(WebDriver driver) {
+        super(driver);
+    }
+
     private int countTemperatures(List<WebElement> temperatures) {
         int counter = 0;
         for (WebElement temperature : temperatures) {
@@ -35,7 +39,4 @@ public class Forecast30Page extends WeatherPage {
         return countTemperatures(minTemperatures);
     }
 
-    public Forecast30Page(WebDriver driver) {
-        super(driver);
-    }
 }

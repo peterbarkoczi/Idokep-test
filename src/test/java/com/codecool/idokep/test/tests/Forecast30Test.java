@@ -6,21 +6,21 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ForecastTest extends BaseTest {
-    Forecast30Page forecastPage;
+public class Forecast30Test extends BaseTest {
+    Forecast30Page forecast30Page;
 
     @BeforeEach
     public void setup() {
         homePage = new HomePage(driver);
-        forecastPage = new Forecast30Page(driver);
+        forecast30Page = new Forecast30Page(driver);
         homePage.load();
     }
 
     @Test
     public void test30DayForecastHasValidValuesFor30Days() {
         homePage.selectSubMenuInForecastMenu("30 napos előrejelzés");
-        Assertions.assertEquals(30, forecastPage.countMaxTemperatures());
-        Assertions.assertEquals(30, forecastPage.countMinTemperatures());
+        Assertions.assertEquals(30, forecast30Page.countMaxTemperatures());
+        Assertions.assertEquals(30, forecast30Page.countMinTemperatures());
     }
 
 }
