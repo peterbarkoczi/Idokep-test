@@ -25,4 +25,10 @@ public class WebshopTest extends BaseTest{
         assertTrue(productDetailPage.isDescriptionDisplayed() && productDetailPage.isLeadDisplayed());
     }
 
+    @Test
+    void nextItemIsDisplayedTest() {
+        webshopPage.clickOnNextArrow();
+        assertTrue(webshopPage.isNextElementDisplayed());
+    }
+
 }
