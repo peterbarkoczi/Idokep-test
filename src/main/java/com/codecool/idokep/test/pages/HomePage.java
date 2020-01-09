@@ -26,6 +26,9 @@ public class HomePage extends WeatherPage {
     @FindBy(css = ".login-reg a")
     List<WebElement> allLinksInUserPanel;
 
+//    @FindBy(css = "#show-panel[titlee='varos-valaszto-panel']")
+//    protected WebElement locationButton;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
