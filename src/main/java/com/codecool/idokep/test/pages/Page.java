@@ -7,9 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
     WebDriver driver;
-
-    private String baseUrl;
-    private WebDriverWait wait;
+    String baseUrl;
+    WebDriverWait wait;
 
     public Page(WebDriver driver) {
         this.driver = driver;
