@@ -10,8 +10,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -46,9 +50,9 @@ public class WebshopTest extends BaseTest {
         assertTrue(webshopPage.isNextElementDisplayed());
     }
 
-    @Test
-    void addProductToCartTest() {
-        List<String> expectedResult = Arrays.asList("Kültéri IP kamera", "WS 9750");
+    @ParameterizedTest
+    @MethodSource("provideInputsForAddProductToCartTest")
+    void addProductToCartTest(List<String> expectedResult) {
         webshopPage.addCameraToCart();
         cartNotificationModal.clickOnContinueShoppingButton();
         webshopPage.addWeatherStationToCart();
@@ -61,6 +65,12 @@ public class WebshopTest extends BaseTest {
     void searchItems(String searchKey) {
         webshopPage.setSearchKey(searchKey);
         assertTrue(searchResultsPage.getFirstSearchResult().equalsIgnoreCase(searchKey));
+    }
+
+    private Stream<Arguments> provideInputsForAddProductToCartTest() {
+        return Stream.of(
+                Arguments.of(Arrays.asList("Kültéri IP kamera", "WS 9750"))
+        );
     }
 
 }
