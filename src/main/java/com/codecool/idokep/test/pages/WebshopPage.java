@@ -17,6 +17,9 @@ public class WebshopPage extends Page {
     @FindBy(xpath = "//li[@class='ajax_block_product item']")
     List<WebElement> products;
 
+    @FindBy(xpath = "//input[@id='search_query_top']")
+    WebElement searchBar;
+
     @FindBy(xpath = "//a[@rel='ajax_id_product_8']")
     WebElement cameraAddToCartButton;
 
@@ -33,11 +36,11 @@ public class WebshopPage extends Page {
     }
 
     public void clickOnProductThumbnail() {
-        clickOn(cameraThumbnail);
+        cameraThumbnail.click();
     }
 
     public void clickOnNextArrow() {
-        clickOn(browseNext);
+        browseNext.click();
     }
 
     public boolean isNextElementDisplayed() {
@@ -45,12 +48,16 @@ public class WebshopPage extends Page {
     }
 
     public void addCameraToCart() {
-        clickOn(cameraAddToCartButton);
+        cameraAddToCartButton.click();
     }
 
     public void addWeatherStationToCart() {
-        clickOn(weatherStationAddToCartButton);
+        weatherStationAddToCartButton.click();
     }
 
 
+    public void setSearchKey(String input) {
+        searchBar.sendKeys(input);
+        searchBar.submit();
+    }
 }
