@@ -57,7 +57,7 @@ public class WebshopTest extends BaseTest {
         cartNotificationModal.clickOnContinueShoppingButton();
         webshopPage.addWeatherStationToCart();
         cartNotificationModal.clickOnCheckCartButton();
-        assertEquals(expectedResult, cartPage.getProductsName());
+        assertEquals(expectedResult, cartPage.getProducts());
     }
 
     @ParameterizedTest
@@ -67,10 +67,42 @@ public class WebshopTest extends BaseTest {
         assertTrue(searchResultsPage.getFirstSearchResult().equalsIgnoreCase(searchKey));
     }
 
+    // MTP-T1076 edit shopping cart test #1
+    @Test
+    void increaseProductAmountInShoppingCartTest() {
+        preconditionForEditShoppingCartTest();
+        cartPage.increaseFirstItemAmount();
+        assertEquals(2, cartPage.getFirstItemTotalAmount());
+    }
+
+    // MTP-T1076 edit shopping cart test #2
+    @Test
+    void decreaseProductAmountInShoppingCartTest() {
+        preconditionForEditShoppingCartTest();
+        cartPage.decreaseFirstItemAmount();
+        assertTrue(cartPage.isItemDisappeared(1));
+    }
+
+    // MTP-T1076 edit shopping cart test #3
+    @Test
+    void deleteProductFromShoppingCartTest() {
+        preconditionForEditShoppingCartTest();
+        cartPage.clickOnSecondItemDeleteButton();
+        assertTrue(cartPage.getProducts().size() == 1 &&
+                cartPage.getProducts().get(0).equals("Kültéri IP kamera"));
+    }
+
     private Stream<Arguments> provideInputsForAddProductToCartTest() {
         return Stream.of(
                 Arguments.of(Arrays.asList("Kültéri IP kamera", "WS 9750"))
         );
+    }
+
+    private void preconditionForEditShoppingCartTest() {
+        webshopPage.addCameraToCart();
+        cartNotificationModal.clickOnContinueShoppingButton();
+        webshopPage.addWeatherStationToCart();
+        cartNotificationModal.clickOnCheckCartButton();
     }
 
 }
