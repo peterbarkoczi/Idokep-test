@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class BaseTest {
+
     protected String username;
     protected String password;
     protected ChromeDriver driver;

@@ -4,6 +4,9 @@ import com.codecool.idokep.test.pages.HomePage;
 import com.codecool.idokep.test.pages.LoginModal;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -22,22 +25,19 @@ class LoginTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("getCredentialsForLoginTests")
-    void loginTest(String username, String password) {
-        homePage.navigateToHomePage();
-        homePage = new HomePage(driver);
-        LoginModal loginModal = homePage.clickLogin(username, password);
-        loginModal.login();
-        Assertions.assertTrue(homePage.isLogoutButtonDisplayed());
+    void loginTest(String username, String password, boolean expectedResult) {
+        homePage.login(username, password);
+        Assertions.assertEquals(expectedResult, homePage.isLogoutButtonDisplayed());
     }
 
     private Stream<Arguments> getCredentialsForLoginTests() {
         return Stream.of(
-                Arguments.of(username, password),
-                Arguments.of(username.toUpperCase(), password),
-                Arguments.of(username, password.toUpperCase()),
-                Arguments.of("Username", password),
-                Arguments.of(username, "password"),
-                Arguments.of("", "")
+                Arguments.of(username, password, true),
+                Arguments.of(username.toUpperCase(), password, false),
+                Arguments.of(username, password.toUpperCase(), false),
+                Arguments.of("Username", password, false),
+                Arguments.of(username, "password", false),
+                Arguments.of("", "", false)
         );
     }
 
