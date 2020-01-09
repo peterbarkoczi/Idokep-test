@@ -17,11 +17,11 @@ public class CartNotificationModal extends Modal {
     }
 
     public void clickOnCheckCartButton() {
-        clickOn(checkCartButton);
+        checkCartButton.click();
     }
 
     public void clickOnContinueShoppingButton() {
-        clickOn(continueShoppingButton);
+        continueShoppingButton.click();
     }
 
 }
